@@ -1,0 +1,16 @@
+{
+  "dataset": "mavecodd",
+  "device": "cuda",
+  "baseline": {
+    "training_time_s": 20.44310998916626,
+    "val_accuracy": 0.75,
+    "checkpoint": "baseline_mavecodd.joblib"
+  },
+  "unet": {
+    "training_time_s": 272.6024100780487,
+    "best_val_loss": 0.7930999289859425,
+    "checkpoint": "unet_mavecodd.pth",
+    "final_val_iou": 0.5226852859411896,
+    "final_val_dice": 0.6609759691439807
+  }
+}

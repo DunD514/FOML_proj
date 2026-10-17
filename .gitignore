@@ -1,0 +1,38 @@
+# Python & Environment
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.env
+.venv/
+env/
+venv/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# PyTest & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# PyTorch & ML Models
+*.pt
+*.pth
+*.onnx
+
+# Data & Large Archives (keep sample data, track raw zip in docs)
+data/raw/mavecodd/
+data/raw/underwater_crack/
+data/processed/
+*.zip
+
+# Streamlit
+.streamlit/
+
+# OS specific
+.DS_Store
+Thumbs.db
+Desktop.ini

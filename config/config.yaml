@@ -1,0 +1,81 @@
+project:
+  name: "AI-Powered Underwater Ship Hull Inspection Drone"
+  version: "1.0.0"
+  random_seed: 42
+
+paths:
+  raw_mavecodd: "data/raw/mavecodd"
+  raw_underwater_crack: "data/raw/underwater_crack"
+  zip_mavecodd: "ry392rp8cj-1.zip"
+  zip_underwater_crack: "under-crack-images.zip"
+  processed_dir: "data/processed"
+  sample_dir: "data/sample"
+  model_dir: "models/checkpoints"
+  figures_dir: "outputs/figures"
+  metrics_dir: "outputs/metrics"
+  reports_dir: "outputs/reports"
+  logs_dir: "outputs/inspection_logs"
+
+dataset:
+  primary: "mavecodd"
+  secondary: "underwater_crack"
+  train_split: 0.70
+  val_split: 0.15
+  test_split: 0.15
+  image_size: [256, 256]
+  sample_count: 50
+  leakage_prevention: true
+
+baseline_model:
+  feature_extractor: "hog_color"
+  hog_orientations: 9
+  hog_pixels_per_cell: [16, 16]
+  hog_cells_per_block: [2, 2]
+  color_bins: 16
+  pca_enabled: true
+  pca_components: 64
+  svm_kernel: "rbf"
+  svm_c: 10.0
+  svm_gamma: "scale"
+
+cnn_model:
+  architecture: "unet"
+  backbone: "custom_residual"
+  in_channels: 3
+  out_channels: 1
+  image_size: [256, 256]
+  batch_size: 8
+  epochs: 15
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  device: "auto"
+  early_stopping_patience: 5
+  checkpoint_name: "best_unet_model.pth"
+
+simulation:
+  hull:
+    length_m: 50.0
+    height_m: 10.0
+    grid_resolution_m: 0.5
+    zone_count_x: 5
+    zone_count_y: 2
+  rov:
+    speed_mps: 0.8
+    inspection_distance_m: 1.5
+    camera_fov_deg: 75.0
+    position_noise_std: 0.05
+    heading_noise_std: 1.0
+  trajectory:
+    type: "serpentine"
+    step_y_m: 1.0
+    step_x_m: 2.0
+  environment:
+    default_turbidity: 0.2
+    red_absorption_factor: 0.65
+    contrast_reduction: 0.25
+    particle_noise_density: 0.002
+
+storage:
+  parquet_dir: "outputs/inspection_logs"
+  compression: "snappy"
+  batch_size: 100

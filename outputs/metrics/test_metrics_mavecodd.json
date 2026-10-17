@@ -1,0 +1,88 @@
+{
+  "dataset": "mavecodd",
+  "baseline_model_a": {
+    "model_name": "Model A (HOG+Color+PCA+SVM)",
+    "accuracy": 0.8197,
+    "precision": 0.8788,
+    "recall": 0.8056,
+    "f1_score": 0.8406,
+    "roc_auc": 0.8711,
+    "confusion_matrix": {
+      "TN": 21,
+      "FP": 4,
+      "FN": 7,
+      "TP": 29
+    },
+    "false_negatives": 7,
+    "false_positives": 4,
+    "test_samples": 61,
+    "latency_ms_per_image": 13.18
+  },
+  "deep_learning_model_b": {
+    "model_name": "Model B (U-Net CNN)",
+    "mean_iou": 0.3833,
+    "mean_dice": 0.498,
+    "mean_pixel_accuracy": 0.7806,
+    "pixel_precision": 0.4146,
+    "pixel_recall": 0.7755,
+    "classification_accuracy": 1.0,
+    "classification_precision": 1.0,
+    "classification_recall": 1.0,
+    "classification_f1": 1.0,
+    "roc_auc": "N/A",
+    "confusion_matrix": {
+      "TN": 0,
+      "FP": 0,
+      "FN": 0,
+      "TP": 12
+    },
+    "false_negatives": 0,
+    "false_positives": 0,
+    "latency_ms_per_image": 121.15,
+    "test_samples": 12
+  },
+  "optical_degradation_stress_test": [
+    {
+      "turbidity": 0.0,
+      "condition": "Clear Water",
+      "mean_iou": 0.3217,
+      "mean_dice": 0.4468,
+      "mean_recall": 0.8505
+    },
+    {
+      "turbidity": 0.15,
+      "condition": "Light Coastal",
+      "mean_iou": 0.3182,
+      "mean_dice": 0.4436,
+      "mean_recall": 0.8531
+    },
+    {
+      "turbidity": 0.3,
+      "condition": "Harbour Waters",
+      "mean_iou": 0.3125,
+      "mean_dice": 0.438,
+      "mean_recall": 0.8671
+    },
+    {
+      "turbidity": 0.45,
+      "condition": "Turbid Estuarine",
+      "mean_iou": 0.301,
+      "mean_dice": 0.4262,
+      "mean_recall": 0.8768
+    },
+    {
+      "turbidity": 0.6,
+      "condition": "Turbid Estuarine",
+      "mean_iou": 0.2907,
+      "mean_dice": 0.4141,
+      "mean_recall": 0.8878
+    }
+  ],
+  "cross_domain_generalization": {
+    "source_dataset": "mavecodd",
+    "target_dataset": "underwater_crack",
+    "cross_domain_iou": 0.0004,
+    "cross_domain_dice": 0.0009,
+    "cross_domain_accuracy": 0.44
+  }
+}
